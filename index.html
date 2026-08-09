@@ -27,16 +27,40 @@
   .card:hover { border-color: #888; }
   .card h2 { margin: 0 0 0.4rem; font-size: 1.1rem; }
   .card p { margin: 0; font-size: 0.9rem; color: #555; }
+  .logo { max-width: 260px; height: auto; margin-bottom: 1rem; }
+  section { margin: 2.5rem 0; }
+  section h2 { font-size: 1.2rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+  ul.features { padding-left: 1.2rem; }
+  ul.features li { margin: 0.4rem 0; }
 </style>
 </head>
 <body>
-<h1>saijack.com</h1>
-<p>作ったものを置いています。</p>
+<img class="logo" src="assets/logo.svg" alt="saijack">
 
-<a class="card" href="https://loladviser.saijack.com/">
+<section>
+  <h2>このサイトについて</h2>
+  <p>個人開発者 saijack が、自分で作ったツールやサービスを公開している紹介ページです。ゲームや日々の作業をちょっと楽にする小さなツールを、個人で企画・実装しています。</p>
+</section>
+
+<section>
   <h2>LoL Adviser</h2>
-  <p>League of Legends のチャンピオンセレクト情報から、LLM に渡すアドバイス用プロンプトを生成する Web サービス。</p>
-</a>
+  <p>
+    <a href="https://loladviser.saijack.com/">LoL Adviser</a> は、League of Legends のチャンピオンセレクト（ドラフト）画面の情報から、ChatGPT や Claude などの LLM に渡すためのアドバイス用プロンプトを自動生成する Web サービスです。
+  </p>
+  <p>
+    LoL では、ドラフト状況（自分と敵のチャンピオン構成、レーン、進行タイミングなど）を踏まえた戦略アドバイスが役立ちますが、その状況を毎回自分で文章にまとめて LLM に説明するのは手間がかかります。LoL Adviser は、この「LLM に渡す前の状況整理」を代わりに行い、すぐに使えるプロンプトとして出力することで、この手間をなくすために作りました。
+  </p>
+  <p><strong>使い方の流れ</strong></p>
+  <ul class="features">
+    <li>チャンピオンセレクト画面の情報（自分と相手のピック、レーンなど）を入力する</li>
+    <li>LoL Adviser がその情報を整理し、LLM 向けのアドバイス依頼プロンプトを生成する</li>
+    <li>生成されたプロンプトを ChatGPT や Claude などにそのまま渡して、戦略アドバイスを受け取る</li>
+  </ul>
+  <a class="card" href="https://loladviser.saijack.com/">
+    <h2>LoL Adviser を開く</h2>
+    <p>League of Legends のチャンピオンセレクト情報から、LLM に渡すアドバイス用プロンプトを生成する Web サービス。</p>
+  </a>
+</section>
 
 </body>
 </html>
