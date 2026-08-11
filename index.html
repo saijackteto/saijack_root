@@ -33,6 +33,32 @@
   section h2 { font-size: 1.2rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
   ul.features { padding-left: 1.2rem; }
   ul.features li { margin: 0.4rem 0; }
+  .works-list { list-style: none; padding: 0; margin: 0; }
+  .works-list > li { border: 1px solid #ddd; border-radius: 8px; margin: 0.75rem 0; overflow: hidden; }
+  .works-list details { padding: 0; }
+  .works-list summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .works-list summary::-webkit-details-marker { display: none; }
+  .works-list summary::after {
+    content: "+";
+    font-weight: 400;
+    color: #888;
+    margin-left: 1rem;
+  }
+  .works-list details[open] summary::after { content: "−"; }
+  .works-list summary:hover { background: #f7f7f7; }
+  .works-detail { padding: 0 1.25rem 1.25rem; border-top: 1px solid #eee; }
+  .works-detail p { margin: 0.8rem 0 0; }
+  .works-detail .features { margin-top: 0.8rem; }
+  .works-detail .card { margin-top: 1rem; }
   footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; color: #777; }
   footer a { color: inherit; }
   nav.site-nav { margin-bottom: 1.5rem; font-size: 0.9rem; }
@@ -55,37 +81,49 @@
 </section>
 
 <section>
-  <h2>LoL Adviser</h2>
-  <p>
-    <a href="https://loladviser.saijack.com/">LoL Adviser</a> は、League of Legends のチャンピオンセレクト（ドラフト）画面の情報から、ChatGPT や Claude などの LLM に渡すためのアドバイス用プロンプトを自動生成する Web サービスです。
-  </p>
-  <p>
-    LoL では、ドラフト状況（自分と敵のチャンピオン構成、レーン、進行タイミングなど）を踏まえた戦略アドバイスが役立ちますが、その状況を毎回自分で文章にまとめて LLM に説明するのは手間がかかります。LoL Adviser は、この「LLM に渡す前の状況整理」を代わりに行い、すぐに使えるプロンプトとして出力することで、この手間をなくすために作りました。
-  </p>
-  <p><strong>使い方の流れ</strong></p>
-  <ul class="features">
-    <li>チャンピオンセレクト画面の情報（自分と相手のピック、レーンなど）を入力する</li>
-    <li>LoL Adviser がその情報を整理し、LLM 向けのアドバイス依頼プロンプトを生成する</li>
-    <li>生成されたプロンプトを ChatGPT や Claude などにそのまま渡して、戦略アドバイスを受け取る</li>
+  <h2>作ったもの一覧</h2>
+  <ul class="works-list">
+    <li>
+      <details>
+        <summary>LoL Adviser</summary>
+        <div class="works-detail">
+          <p>
+            <a href="https://loladviser.saijack.com/">LoL Adviser</a> は、League of Legends のチャンピオンセレクト（ドラフト）画面の情報から、ChatGPT や Claude などの LLM に渡すためのアドバイス用プロンプトを自動生成する Web サービスです。
+          </p>
+          <p>
+            LoL では、ドラフト状況（自分と敵のチャンピオン構成、レーン、進行タイミングなど）を踏まえた戦略アドバイスが役立ちますが、その状況を毎回自分で文章にまとめて LLM に説明するのは手間がかかります。LoL Adviser は、この「LLM に渡す前の状況整理」を代わりに行い、すぐに使えるプロンプトとして出力することで、この手間をなくすために作りました。
+          </p>
+          <p><strong>使い方の流れ</strong></p>
+          <ul class="features">
+            <li>チャンピオンセレクト画面の情報（自分と相手のピック、レーンなど）を入力する</li>
+            <li>LoL Adviser がその情報を整理し、LLM 向けのアドバイス依頼プロンプトを生成する</li>
+            <li>生成されたプロンプトを ChatGPT や Claude などにそのまま渡して、戦略アドバイスを受け取る</li>
+          </ul>
+          <a class="card" href="https://loladviser.saijack.com/">
+            <h2>LoL Adviser を開く</h2>
+            <p>League of Legends のチャンピオンセレクト情報から、LLM に渡すアドバイス用プロンプトを生成する Web サービス。</p>
+          </a>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details>
+        <summary>MHXX 護石情報 OCR解析ツール</summary>
+        <div class="works-detail">
+          <p>
+            <a href="https://talismanocr-mhxx.saijack.com/">MHXX 護石情報 OCR解析ツール</a> は、モンスターハンターXX（MHXX）の護石一覧画面のスクリーンショットをアップロードすると、1枚の画面に表示されている護石（最大9件）をまとめてOCRで自動解析し、CSV形式でダウンロードできる Web アプリケーションです。
+          </p>
+          <p>
+            護石の情報をひとつずつ手入力で記録するのは手間がかかるため、スクリーンショットから直接まとめて読み取り、その場で内容を確認・修正しながらリスト化できるようにするために作りました。サーバーを使わず、ブラウザ内で完結して動作します。
+          </p>
+          <a class="card" href="https://talismanocr-mhxx.saijack.com/">
+            <h2>MHXX 護石情報 OCR解析ツールを開く</h2>
+            <p>モンスターハンターXXの護石一覧画面をOCRで自動解析し、CSV形式でダウンロードできる Web アプリ。</p>
+          </a>
+        </div>
+      </details>
+    </li>
   </ul>
-  <a class="card" href="https://loladviser.saijack.com/">
-    <h2>LoL Adviser を開く</h2>
-    <p>League of Legends のチャンピオンセレクト情報から、LLM に渡すアドバイス用プロンプトを生成する Web サービス。</p>
-  </a>
-</section>
-
-<section>
-  <h2>MHXX 護石情報 OCR解析ツール</h2>
-  <p>
-    <a href="https://talismanocr-mhxx.saijack.com/">MHXX 護石情報 OCR解析ツール</a> は、モンスターハンターXX（MHXX）の護石一覧画面のスクリーンショットをアップロードすると、1枚の画面に表示されている護石（最大9件）をまとめてOCRで自動解析し、CSV形式でダウンロードできる Web アプリケーションです。
-  </p>
-  <p>
-    護石の情報をひとつずつ手入力で記録するのは手間がかかるため、スクリーンショットから直接まとめて読み取り、その場で内容を確認・修正しながらリスト化できるようにするために作りました。サーバーを使わず、ブラウザ内で完結して動作します。
-  </p>
-  <a class="card" href="https://talismanocr-mhxx.saijack.com/">
-    <h2>MHXX 護石情報 OCR解析ツールを開く</h2>
-    <p>モンスターハンターXXの護石一覧画面をOCRで自動解析し、CSV形式でダウンロードできる Web アプリ。</p>
-  </a>
 </section>
 
 <footer>
