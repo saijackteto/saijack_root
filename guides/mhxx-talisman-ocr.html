@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="モンスターハンターXX向け「MHXX 護石情報 OCR解析ツール」の使い方ガイド。護石一覧画面のスクリーンショットを一括OCR解析し、CSVで保存する手順や精度を上げるコツをまとめています。">
+<title>MHXX 護石情報 OCR解析ツール 使い方ガイド | saijack.com</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    max-width: clamp(640px, 80vw, 900px);
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    color: #222;
+    line-height: 1.8;
+  }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+  a { color: #c2185b; }
+  ol, ul { padding-left: 1.4rem; }
+  li { margin: 0.5rem 0; }
+  .lead { font-size: 1.05rem; color: #444; }
+  .cta {
+    display: inline-block;
+    margin: 1.5rem 0;
+    padding: 0.7rem 1.4rem;
+    background: #c2185b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .cta:hover { background: #a51349; }
+  dl { margin: 1rem 0; }
+  dt { font-weight: 600; margin-top: 1rem; }
+  dd { margin: 0.3rem 0 0; color: #444; }
+  .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  nav.site-nav { margin-bottom: 1rem; font-size: 0.9rem; }
+  nav.site-nav a { margin-right: 1rem; color: #555; text-decoration: none; }
+  nav.site-nav a:hover { text-decoration: underline; }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; color: #777; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/">ホーム</a>
+  <a href="/guides/">使い方ガイド</a>
+  <a href="/about.html">運営者情報</a>
+  <a href="/terms.html">利用規約</a>
+  <a href="/privacy.html">プライバシーポリシー</a>
+</nav>
+<a class="back" href="/guides/">&larr; 使い方ガイド一覧に戻る</a>
+
+<h1>MHXX 護石情報 OCR解析ツール 使い方ガイド</h1>
+<p class="lead">モンスターハンターXX（MHXX）の護石一覧画面のスクリーンショットから、護石情報を自動でOCR解析してCSV化するツールの使い方を解説します。</p>
+
+<h2>このツールで解決したい課題</h2>
+<p>
+  MHXXでは、護石（お守り）を大量に周回して集めることが多く、所持している護石のスキル構成を把握・比較するには一覧化が欠かせません。しかし護石一覧画面はゲーム内で確認できても、外部で検索・並べ替え・共有できる形にするには、ひとつずつ手入力で書き写す必要があり、護石の数が多いほど大きな負担になります。
+</p>
+<p>
+  <a href="https://talismanocr-mhxx.saijack.com/">MHXX 護石情報 OCR解析ツール</a> は、この書き写し作業を OCR（光学文字認識）で自動化するために作りました。護石一覧画面のスクリーンショットをアップロードするだけで、画面に表示されている護石（1画面あたり最大9件）をまとめて読み取り、その場で内容を確認・修正しながらリスト化できます。サーバーにデータを送らずブラウザ内の処理だけで完結するため、護石情報が外部に送信される心配もありません。
+</p>
+
+<h2>使い方の手順</h2>
+
+<h3>1. ゲーム内で護石一覧画面のスクリーンショットを撮る</h3>
+<p>MHXXの護石一覧画面を開き、スクリーンショットを撮影します。1画面に表示される護石は最大9件のため、所持数が多い場合は画面をスクロールしながら複数枚（例: 1/18, 2/18 ... のように連番で）撮影しておくとスムーズです。</p>
+
+<h3>2. スクリーンショットをアップロードする</h3>
+<p>ツールの「護石一覧画面を一括OCR」から画像ファイルを選択します。1枚ずつでも、複数枚まとめて選択してもかまいません。複数枚選択した場合、ツールが画面をまたいで自動的に一括処理します。</p>
+
+<h3>3. OCR結果を確認・修正する</h3>
+<p>アップロードすると「スキャン済み護石一覧」にOCRで読み取られた護石情報が追加されます。OCRは文字を正しく認識できないケースもゼロではないため、リストに反映された内容を目視で確認し、誤読があればその場で修正します。</p>
+
+<h3>4. CSVでダウンロードする</h3>
+<p>内容の確認が終わったら「CSVでダウンロード（全ページ）」から、これまでに読み取った護石情報をまとめてCSVファイルとして保存できます。保存したCSVは、表計算ソフトで並べ替えたり、スキル構成ごとに絞り込んだりする用途に使えます。</p>
+
+<h2>精度を上げるコツ</h2>
+<ul>
+  <li><strong>画面を最大化してから撮影する:</strong> 文字が小さいとOCRの誤読が増えるため、可能な範囲で解像度の高いスクリーンショットを使う。</li>
+  <li><strong>1画面ずつ区切って撮影する:</strong> 護石一覧の表示範囲を画面ごとにきっちり区切って撮影すると、一括処理時の対応付けがずれにくくなります。</li>
+  <li><strong>アップロード後は必ず一覧を見直す:</strong> OCRは完全ではないため、特にスキル名やポイント数の欄は目視チェックを習慣にする。</li>
+</ul>
+
+<h2>よくある質問</h2>
+<dl>
+  <dt>Q. アカウント登録やインストールは必要ですか？</dt>
+  <dd>A. 不要です。ブラウザでページを開き、画像をアップロードするだけで使えます。</dd>
+
+  <dt>Q. アップロードした画像はサーバーに保存されますか？</dt>
+  <dd>A. このツールはブラウザ内で処理が完結する設計になっています。詳細な取り扱いは<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。</dd>
+
+  <dt>Q. 対応している画像形式は？</dt>
+  <dd>A. スマートフォンやキャプチャーデバイスで撮影した一般的な画像ファイル（PNG・JPEGなど）に対応しています。</dd>
+
+  <dt>Q. 一度に何枚まで処理できますか？</dt>
+  <dd>A. 枚数に明確な上限は設けていませんが、枚数が多いほど確認・修正の手間も増えるため、区切りの良い単位でのアップロードを推奨します。</dd>
+</dl>
+
+<a class="cta" href="https://talismanocr-mhxx.saijack.com/">MHXX 護石情報 OCR解析ツールを開く</a>
+
+<footer>
+  <a href="/guides/">使い方ガイド一覧</a> ・ <a href="/">saijack.com トップに戻る</a>
+</footer>
+
+</body>
+</html>
