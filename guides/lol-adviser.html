@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="League of Legends 向けツール「LoL Adviser」の使い方ガイド。チャンピオンセレクト画面の情報からLLM向けアドバイスプロンプトを生成する手順、活用のコツ、よくある質問をまとめています。">
+<title>LoL Adviser 使い方ガイド | saijack.com</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    max-width: clamp(640px, 80vw, 900px);
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    color: #222;
+    line-height: 1.8;
+  }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.4rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+  a { color: #c2185b; }
+  ol, ul { padding-left: 1.4rem; }
+  li { margin: 0.5rem 0; }
+  .lead { font-size: 1.05rem; color: #444; }
+  .cta {
+    display: inline-block;
+    margin: 1.5rem 0;
+    padding: 0.7rem 1.4rem;
+    background: #c2185b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .cta:hover { background: #a51349; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+  th, td { border: 1px solid #ddd; padding: 0.5rem 0.75rem; text-align: left; }
+  th { background: #f7f7f7; }
+  dl { margin: 1rem 0; }
+  dt { font-weight: 600; margin-top: 1rem; }
+  dd { margin: 0.3rem 0 0; color: #444; }
+  .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  nav.site-nav { margin-bottom: 1rem; font-size: 0.9rem; }
+  nav.site-nav a { margin-right: 1rem; color: #555; text-decoration: none; }
+  nav.site-nav a:hover { text-decoration: underline; }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; color: #777; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/">ホーム</a>
+  <a href="/guides/">使い方ガイド</a>
+  <a href="/about.html">運営者情報</a>
+  <a href="/terms.html">利用規約</a>
+  <a href="/privacy.html">プライバシーポリシー</a>
+</nav>
+<a class="back" href="/guides/">&larr; 使い方ガイド一覧に戻る</a>
+
+<h1>LoL Adviser 使い方ガイド</h1>
+<p class="lead">League of Legends のチャンピオンセレクト（ドラフト）画面の情報を、ChatGPT や Claude などの LLM にそのまま渡せるアドバイス依頼プロンプトに変換するツール「LoL Adviser」の使い方を、実際の入力項目に沿って解説します。</p>
+
+<h2>LoL Adviser とは</h2>
+<p>
+  League of Legends では、試合開始前のチャンピオンセレクトの時点で「自分と相手のチャンピオン構成」「レーンの組み合わせ」「サモナースペル」「BAN状況」など、多くの情報が確定します。これらを踏まえて事前に戦略を立てられれば試合を有利に進めやすくなりますが、その状況を毎回自分の言葉で整理して LLM に説明するのは地味に手間がかかります。
+</p>
+<p>
+  <a href="https://loladviser.saijack.com/">LoL Adviser</a> は、この「LLM に渡す前の状況整理」を代行するツールです。画面上のセレクトボックスにピック内容を入力するだけで、LLM がそのまま読める形式のアドバイス依頼プロンプトを自動生成します。ブラウザ上で完結し、アカウント登録などは不要です。
+</p>
+
+<h2>使い方の手順</h2>
+
+<h3>1. パッチバージョンを確認する</h3>
+<p>画面上部にはツールが参照している現在のゲームパッチバージョンが表示されます。LoL は頻繁にバランス調整が行われるため、生成されるプロンプトにも参照パッチが明記され、LLM が古い情報でアドバイスしてしまうのを防ぎます。</p>
+
+<h3>2. 自分の陣営・ロール・ランク帯を選ぶ</h3>
+<p>「自分のチーム」でブルーサイド／レッドサイドを、「自分のロール」でトップ・ジャングル・ミッド・ADC・サポートのいずれかを選択します。ランク帯（アイアン〜チャレンジャー）も選べるため、LLM は回答者のスキル水準に合わせたアドバイスの粒度を調整できます。</p>
+
+<h3>3. サモナースペルを入力する</h3>
+<p>自分と対面（レーン対面の相手）のサモナースペルを、フラッシュ・イグナイト・テレポート・スマイトなど実際の候補から選びます。サモナースペルの組み合わせはレーン戦の駆け引きに直結するため、アドバイスの精度に大きく影響する項目です。</p>
+
+<h3>4. BAN 状況を入力する（任意）</h3>
+<p>ブルーサイド・レッドサイド双方、各ロール最大10件までBANされたチャンピオンを入力できます。省略も可能ですが、入力しておくとピック予測やカウンター選択の精度が上がります。</p>
+
+<h3>5. 各レーンのピックを入力する</h3>
+<p>自分と敵、両陣営のトップ・ジャングル・ミッド・ADC・サポートそれぞれにチャンピオンを割り当てます。すべてのチャンピオンが選択候補として一覧表示されるため、入力途中でも文字検索のように絞り込めます。ピックがまだ確定していないロールがあっても、その項目は「不明」として扱われるので、ドラフト進行中の途中段階でもプロンプトを生成できます。</p>
+
+<h3>6. プロンプトを生成する</h3>
+<p>「現時点の情報で生成」ボタンを押すと、これまでに入力した内容をもとにしたアドバイス依頼プロンプトがテキストとして出力されます。これをそのままコピーして ChatGPT や Claude などの LLM チャットに貼り付けるだけで、レーン戦の立ち回りやチームファイトの方針についてのアドバイスを受け取れます。</p>
+
+<h2>活用のコツ</h2>
+<ul>
+  <li><strong>ドラフト中に複数回生成する:</strong> ピックが確定するたびに再生成すれば、状況の変化に応じたアドバイスを都度受け取れます。</li>
+  <li><strong>ランク帯を正直に選ぶ:</strong> 実際のスキル帯より高いランクを選ぶと、実践しづらい高度なアドバイスばかりになりがちです。</li>
+  <li><strong>BAN情報も入力する:</strong> 特にカウンターピックが重要なマッチアップでは、BAN状況を含めた方がアドバイスの的中率が上がります。</li>
+</ul>
+
+<h2>よくある質問</h2>
+<dl>
+  <dt>Q. アカウント登録は必要ですか？</dt>
+  <dd>A. 不要です。ブラウザでページを開いてすぐに利用できます。</dd>
+
+  <dt>Q. どの LLM に貼り付ければよいですか？</dt>
+  <dd>A. ChatGPT・Claude・Gemini など、テキストを入力できる LLM チャットであれば基本的に利用できます。</dd>
+
+  <dt>Q. 入力途中でも使えますか？</dt>
+  <dd>A. 使えます。未入力の項目は「不明」として扱われるため、ドラフトの序盤時点でも生成できます。</dd>
+
+  <dt>Q. 入力したデータはどこかに保存されますか？</dt>
+  <dd>A. 詳細な取り扱いは<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。</dd>
+</dl>
+
+<a class="cta" href="https://loladviser.saijack.com/">LoL Adviser を開く</a>
+
+<footer>
+  <a href="/guides/">使い方ガイド一覧</a> ・ <a href="/">saijack.com トップに戻る</a>
+</footer>
+
+</body>
+</html>
